@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parthiv EI Car Showroom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 1em;
+            margin: 0 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .car {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .car:hover {
+            transform: scale(1.05);
+        }
+
+        .car img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 10px;
+        }
+
+        .car h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
+        .car p {
+            margin-bottom: 10px;
+            color: #6c757d;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .car {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Parthiv EI Car Showroom</h1>
+    </header>
+
+    <nav>
+        <a href="#tata">TATA</a>
+        <a href="#mahindra">MAHINDRA</a>
+        <a href="#suzuki">SUZUKI</a>
+        <a href="#honda">HONDA</a>
+        <a href="#ashokleyland">ASHOK LEYLAND</a>
+    </nav>
+
+    <section>
+        <div class="car" onclick="openModal('TATA Car Model', 35000, 'TATA Car description.');">
+            <img src="tata_car.jpg" alt="TATA Car">
+            <h2>TATA Car Model</h2>
+            <p>Price: $35,000</p>
+            <button>Contact Dealer</button>
+        </div>
+
+        <div class="car" onclick="openModal('MAHINDRA Car Model', 40000, 'MAHINDRA Car description.');">
+            <img src="mahindra_car.jpg" alt="MAHINDRA Car">
+            <h2>MAHINDRA Car Model</h2>
+            <p>Price: $40,000</p>
+            <button>Contact Dealer</button>
+        </div>
+
+        <div class="car" onclick="openModal('SUZUKI Car Model', 30000, 'SUZUKI Car description.');">
+            <img src="suzuki_car.jpg" alt="SUZUKI Car">
+            <h2>SUZUKI Car Model</h2>
+            <p>Price: $30,000</p>
+            <button>Contact Dealer</button>
+        </div>
+
+        <div class="car" onclick="openModal('HONDA Car Model', 45000, 'HONDA Car description.');">
+            <img src="honda_car.jpg" alt="HONDA Car">
+            <h2>HONDA Car Model</h2>
+            <p>Price: $45,000</p>
+            <button>Contact Dealer</button>
+        </div>
+
+        <div class="car" onclick="openModal('ASHOK LEYLAND Car Model', 50000, 'ASHOK LEYLAND Car description.');">
+            <img src="ashok_leyland_car.jpg" alt="ASHOK LEYLAND Car">
+            <h2>ASHOK LEYLAND Car Model</h2>
+            <p>Price: $50,000</p>
+            <button>Contact Dealer</button>
+        </div>
+
+        <!-- Add more cars as needed -->
+
+    </section>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <p id="modalPrice"></p>
+            <button>Contact Dealer</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Parthiv EI Car Showroom. All rights reserved.</p>
+        <p>123 Main Street, Cityville, Country</p>
+        <p>Email: info@parthivei.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Follow us on social media:</p>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(title, price, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = 'Price: $' + price.toLocaleString();
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
